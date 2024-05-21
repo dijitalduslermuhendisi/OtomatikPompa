@@ -1,0 +1,23 @@
+#define BUTON_PIN 2
+#define RELAY_PIN 3
+
+int oncekiDurum = HIGH;
+bool roleDurumu = false;
+
+void setup() {
+  pinMode(BUTON_PIN, INPUT);
+  pinMode(RELAY_PIN, OUTPUT);
+}
+
+void loop() {
+ int butonDurumu = digitalRead(BUTON_PIN);
+
+ if (butonDurumu != oncekiDurum){
+   oncekiDurum = butonDurumu;
+    if (butonDurumu == LOW){
+       roleDurumu = !roleDurumu;
+       digitalWrite(RELAY_PIN, roleDurumu ? HIGH: LOW);
+      }
+   }
+  
+}
